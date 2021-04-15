@@ -1,4 +1,4 @@
-# go-distance v1.0.0
+# go-distance v1.2.0
 
 Ini adalah package bahasa pemrograman go sederhana untuk menghitung jarak antara dua titik latitude dan longitude.
 
@@ -6,96 +6,42 @@ Ini adalah package bahasa pemrograman go sederhana untuk menghitung jarak antara
 ```go
 func (l LatLon) Count() Miles
 ```
-### func Kilometre()
+### func ToKilometre()
 ```go
-func (m Miles) Kilometre() Kilometre
+func (m Miles) ToKilometre() Kilometre
 ```
-### func Ts()
+### func ToMiles()
 ```go
-func (f JFile) Ts(key string) (message interface{})
+func (k Kilometre) ToMiles() Miles
 ```
 
 ### Instalasi
-`go get github.com/michaelwp/linggo` atau
-`go get github.com/michaelwp/linggo@v1.1.1`
+`go get -u github.com/michaelwp/go-distance`
 
 ### Contoh penggunaan
-A. Buat Json file untuk menampung bahasa yang digunakan
-- id.json (bahasa Indonesia)
-```json 
-{
-  "hello world": "halo dunia",
-  "welcome": "selamat datang",
-  "please": "silahkan"
-}
-```
-- en.json (bahasa Inggris)
-```json 
-{
-  "hello world": "hello world"
-}
-```
-- fr.json (bahasa Prancis)
-```json 
-{
-  "hello world": "Bonjour le monde"
-}
-```
-- en.json (bahasa China)
-```json 
-{
-  "hello world": "你好，世界"
-}
-```
-B. memanggil file json setiap kali proses translate
 
 ```go 
 package main
 
 import (
-    "github.com/michaelwp/linggo"  // import linggo package
-    "log"
+	"fmt"
+	go_distance "github.com/michaelwp/go-distance"
 )
 
-func main(){
-    // contoh translate ke dalam bahasa China
-    msg, err := linggo.Tr("ch", "hello world")
-    // handle error (disarankan untuk menghandle error dengan cara yang lebih baik)
-    if err != nil {
-        log.Fatal(err)
-    }
-    // menampilkan hasil ke layar
-    log.Println(msg)
+func main()  {
+	var LatLon = go_distance.LatLon{
+		LatStart: -6.2973856,
+		LonStart: 106.6388177,
+		LatEnd:   -6.3027637,
+		LonEnd:   106.6410986,
+	}
+
+	fmt.Println(LatLon.Count(), "mil")
+	fmt.Println(LatLon.Count().ToKilometre(), "km")
 }
 ```
 #### Hasil
 ```text
-你好，世界
-```
-
-C. memanggil file json hanya sekali diawal.
-
-```go 
-package main
-
-import (
-    "github.com/michaelwp/linggo"  // import linggo package
-    "log"
-)
-
-// load json file (bahasa indonesia/ id.json)
-var f, _ = linggo.Set("id")
-
-func main() {
-    welcome := f.Ts("welcome")
-    please := f.Ts("please")
-
-    log.Println(welcome)
-    log.Println(please)
-}
-```
-#### Hasil
-```text
-selamat datang
-silahkan
+0.5238991320272929 mil
+0.8431339247333317 km
 ```
