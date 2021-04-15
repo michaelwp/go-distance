@@ -80,7 +80,7 @@ func TestLatLon_count(t *testing.T) {
 				LatEnd:   tt.fields.LatEnd,
 				LonEnd:   tt.fields.LonEnd,
 			}
-			if got := l.count(); got != tt.want {
+			if got := l.Count(); got != tt.want {
 				t.Errorf("count() = %v, want %v", got, tt.want)
 			}
 		})
