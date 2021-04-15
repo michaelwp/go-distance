@@ -2,7 +2,7 @@ package go_distance
 
 import "math"
 
-func (l LatLon) count() Miles {
+func (l LatLon) Count() Miles {
 	var theta = l.LatStart - l.LatEnd
 
 	var dist = math.Sin(Degree(l.LatStart).ToRadians().Float64())*
