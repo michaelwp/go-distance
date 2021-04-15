@@ -1,4 +1,4 @@
-# go-distance v1.2.0
+# go-distance v1.2.1
 
 Ini adalah package bahasa pemrograman go sederhana untuk menghitung jarak antara dua titik latitude dan longitude.
 
