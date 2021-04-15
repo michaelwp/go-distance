@@ -12,7 +12,7 @@ func TestDegree_Float64(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.deg.Float64(); got != tt.want {
+			if got := tt.deg.ToFloat64(); got != tt.want {
 				t.Errorf("Float64() = %v, want %v", got, tt.want)
 			}
 		})
@@ -46,7 +46,7 @@ func TestKilometre_Miles(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.k.Miles(); got != tt.want {
+			if got := tt.k.ToMiles(); got != tt.want {
 				t.Errorf("Miles() = %v, want %v", got, tt.want)
 			}
 		})
@@ -98,7 +98,7 @@ func TestMiles_Kilometre(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.m.Kilometre(); got != tt.want {
+			if got := tt.m.ToKilometre(); got != tt.want {
 				t.Errorf("Kilometre() = %v, want %v", got, tt.want)
 			}
 		})
@@ -115,7 +115,7 @@ func TestRadian_Float64(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.rad.Float64(); got != tt.want {
+			if got := tt.rad.ToFloat64(); got != tt.want {
 				t.Errorf("Float64() = %v, want %v", got, tt.want)
 			}
 		})

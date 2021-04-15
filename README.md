@@ -2,13 +2,13 @@
 
 Ini adalah package bahasa pemrograman go sederhana untuk menghitung jarak antara dua titik latitude dan longitude.
 
-### func Tr()
+### func Count()
 ```go
-func Tr(file string, key string) (message interface{}, err error)
+func (l LatLon) Count() Miles
 ```
-### func Set()
+### func Kilometre()
 ```go
-func Set(file string) (jsonFile JFile, err error)
+func (m Miles) Kilometre() Kilometre
 ```
 ### func Ts()
 ```go

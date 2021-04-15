@@ -5,14 +5,14 @@ import "math"
 func (l LatLon) Count() Miles {
 	var theta = l.LatStart - l.LatEnd
 
-	var dist = math.Sin(Degree(l.LatStart).ToRadians().Float64())*
-		math.Sin(Degree(l.LatEnd).ToRadians().Float64()) +
-		math.Cos(Degree(l.LatStart).ToRadians().Float64())*
-			math.Cos(Degree(l.LatEnd).ToRadians().Float64())*
-			math.Cos(Degree(theta).ToRadians().Float64())
+	var dist = math.Sin(Degree(l.LatStart).ToRadians().ToFloat64())*
+		math.Sin(Degree(l.LatEnd).ToRadians().ToFloat64()) +
+		math.Cos(Degree(l.LatStart).ToRadians().ToFloat64())*
+			math.Cos(Degree(l.LatEnd).ToRadians().ToFloat64())*
+			math.Cos(Degree(theta).ToRadians().ToFloat64())
 
 	dist = math.Acos(dist)
-	dist = Radian(dist).ToDegrees().Float64()
+	dist = Radian(dist).ToDegrees().ToFloat64()
 
 	var miles = dist * 60 * 1.1515
 
@@ -27,18 +27,18 @@ func (rad Radian) ToDegrees() Degree {
 	return Degree(float64(rad) * (180.0 / math.Pi))
 }
 
-func (rad Radian) Float64() float64 {
+func (rad Radian) ToFloat64() float64 {
 	return float64(rad)
 }
 
-func (deg Degree) Float64() float64 {
+func (deg Degree) ToFloat64() float64 {
 	return float64(deg)
 }
 
-func (m Miles) Kilometre() Kilometre {
+func (m Miles) ToKilometre() Kilometre {
 	return Kilometre(m * 1.609344)
 }
 
-func (k Kilometre) Miles() Miles {
+func (k Kilometre) ToMiles() Miles {
 	return Miles(k * 0.621371)
 }
