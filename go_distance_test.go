@@ -70,7 +70,7 @@ func TestLatLon_count(t *testing.T) {
 			LonStart: 106.6388177,
 			LatEnd:   -6.3027637,
 			LonEnd:   106.6410986,
-		}, 0.5238991320272929},
+		}, 0.40323836641733635},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -94,7 +94,7 @@ func TestMiles_Kilometre(t *testing.T) {
 		want Kilometre
 	}{
 		{"Miles To Kilometres",
-			0.5238991320272929, 0.8431339247333317},
+			0.40323836641733635, 0.6489492455635418},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

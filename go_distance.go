@@ -3,7 +3,7 @@ package go_distance
 import "math"
 
 func (l LatLon) Count() Miles {
-	var theta = l.LatStart - l.LatEnd
+	var theta = l.LonStart - l.LonEnd
 
 	var dist = math.Sin(Degree(l.LatStart).ToRadians().ToFloat64())*
 		math.Sin(Degree(l.LatEnd).ToRadians().ToFloat64()) +
@@ -18,6 +18,21 @@ func (l LatLon) Count() Miles {
 
 	return Miles(miles)
 }
+
+//func (l LatLon) Count() Miles {
+//	var earthRadiusMiles = 3.958
+//
+//	var dLat = Degree(l.LatEnd - l.LatStart).ToRadians().ToFloat64()
+//	var dLon = Degree(l.LonEnd - l.LatStart).ToRadians().ToFloat64()
+//
+//	l.LatStart = Degree(l.LatStart).ToRadians().ToFloat64()
+//	l.LatEnd = Degree(l.LatEnd).ToRadians().ToFloat64()
+//
+//	var a = math.Sin(dLat/2) * math.Sin(dLat/2) +
+//		math.Sin(dLon/2)*math.Sin(dLon/2)*math.Cos(l.LatStart)*math.Cos(l.LatEnd)
+//	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+//	return earthRadiusMiles * c
+//}
 
 func (deg Degree) ToRadians() Radian {
 	return Radian(float64(deg) * (math.Pi / 180.0))
