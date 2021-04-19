@@ -55,10 +55,10 @@ func TestKilometre_Miles(t *testing.T) {
 
 func TestLatLon_count(t *testing.T) {
 	type fields struct {
-		LatStart float64
-		LonStart float64
-		LatEnd   float64
-		LonEnd   float64
+		OriginLatitude       float64
+		OriginLongitude      float64
+		DestinationLatitude  float64
+		DestinationLongitude float64
 	}
 	tests := []struct {
 		name   string
@@ -66,19 +66,19 @@ func TestLatLon_count(t *testing.T) {
 		want   Miles
 	}{
 		{"Distance Count", fields{
-			LatStart: -6.2973856,
-			LonStart: 106.6388177,
-			LatEnd:   -6.3027637,
-			LonEnd:   106.6410986,
+			OriginLatitude:       -6.2973856,
+			OriginLongitude:      106.6388177,
+			DestinationLatitude:  -6.3027637,
+			DestinationLongitude: 106.6410986,
 		}, 0.40323836641733635},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			l := LatLon{
-				LatStart: tt.fields.LatStart,
-				LonStart: tt.fields.LonStart,
-				LatEnd:   tt.fields.LatEnd,
-				LonEnd:   tt.fields.LonEnd,
+				OriginLatitude:       tt.fields.OriginLatitude,
+				OriginLongitude:      tt.fields.OriginLongitude,
+				DestinationLatitude:  tt.fields.DestinationLatitude,
+				DestinationLongitude: tt.fields.DestinationLongitude,
 			}
 			if got := l.Count(); got != tt.want {
 				t.Errorf("count() = %v, want %v", got, tt.want)

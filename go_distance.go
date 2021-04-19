@@ -3,12 +3,12 @@ package go_distance
 import "math"
 
 func (l LatLon) Count() Miles {
-	var theta = l.LonStart - l.LonEnd
+	var theta = l.OriginLongitude - l.DestinationLongitude
 
-	var dist = math.Sin(Degree(l.LatStart).ToRadians().ToFloat64())*
-		math.Sin(Degree(l.LatEnd).ToRadians().ToFloat64()) +
-		math.Cos(Degree(l.LatStart).ToRadians().ToFloat64())*
-			math.Cos(Degree(l.LatEnd).ToRadians().ToFloat64())*
+	var dist = math.Sin(Degree(l.OriginLatitude).ToRadians().ToFloat64())*
+		math.Sin(Degree(l.DestinationLatitude).ToRadians().ToFloat64()) +
+		math.Cos(Degree(l.OriginLatitude).ToRadians().ToFloat64())*
+			math.Cos(Degree(l.DestinationLatitude).ToRadians().ToFloat64())*
 			math.Cos(Degree(theta).ToRadians().ToFloat64())
 
 	dist = math.Acos(dist)

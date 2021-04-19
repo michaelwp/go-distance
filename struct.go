@@ -2,10 +2,10 @@ package go_distance
 
 type (
 	LatLon struct {
-		LatStart float64 `json:"lat_start"`
-		LonStart float64 `json:"lon_start"`
-		LatEnd   float64 `json:"lat_end"`
-		LonEnd   float64 `json:"lon_end"`
+		OriginLatitude       float64 `json:"origin_latitude"`
+		OriginLongitude      float64 `json:"origin_longitude"`
+		DestinationLatitude  float64 `json:"destination_latitude"`
+		DestinationLongitude float64 `json:"destination_longitude"`
 	}
 
 	Degree    float64
